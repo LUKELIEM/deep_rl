@@ -1,9 +1,13 @@
 from __future__ import print_function
 
 import gym
-from gym import wrappers, logger
+from gym import wrappers
+import logging
 import numpy as np
-from six.moves import cPickle as pickle
+try:
+    import cPickle as pickle
+except ImportError:
+    import pickle
 import json, sys, os
 from os import path
 from _policies import BinaryActionLinearPolicy # Different file so it can be unpickled
@@ -44,7 +48,8 @@ def do_rollout(agent, env, num_steps, render=False):
     return total_rew, t+1
 
 if __name__ == '__main__':
-    logger.set_level(logger.INFO)
+    logger = logging.getLogger()
+    logger.setLevel(logging.INFO)
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--display', action='store_true')
@@ -91,3 +96,6 @@ if __name__ == '__main__':
     writefile('info.json', json.dumps(info))
 
     env.close()
+
+    logger.info("Successfully ran cross-entropy method. Now trying to upload results to the scoreboard. If it breaks, you can always just try re-uploading the same results.")
+    gym.upload(outdir,api_key='sk_1oIzEVMTFW8LVGHnRRC6w')
