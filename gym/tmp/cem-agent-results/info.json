@@ -1,0 +1,1 @@
+{"params": {"n_iter": 5, "batch_size": 25, "elite_frac": 0.2}, "argv": ["/home/lukeai/miniconda3/lib/python3.6/site-packages/ipykernel/__main__.py", "-f", "/run/user/1000/jupyter/kernel-9aceeb79-dec0-426c-887c-f4e67ee0f0de.json"], "env_id": "CartPole-v0"}
